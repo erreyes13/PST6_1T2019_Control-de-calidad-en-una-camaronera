@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B6D8EB"
+    tools:context=".AgregarActivity">
+
+    <LinearLayout
+        android:layout_width="330dp"
+        android:layout_height="623dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="73dp"
+            android:gravity="center"
+            android:text="Complete los siguientes parametros "
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:fontFamily="@font/abhaya_libre_extrabold" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:gravity="center_vertical"
+            android:text="Datos de la Piscina:"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:fontFamily="serif" />
+
+        <EditText
+            android:id="@+id/alto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Profundidad"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/ancho"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Ancho"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/largo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Largo"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:gravity="center_vertical"
+            android:text="Datos de control:"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:fontFamily="serif" />
+
+        <EditText
+            android:id="@+id/phmax"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="pH max"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/phmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="pH min"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/tempmax"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Temperatura max"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/tempmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Temperatura min"
+            android:inputType="numberDecimal" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="228dp"
+            android:layout_height="wrap_content"
+            android:background="#FFE794"
+            android:text="AGREGAR"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
