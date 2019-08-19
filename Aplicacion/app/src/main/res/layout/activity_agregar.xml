@@ -116,6 +116,7 @@
             android:layout_width="228dp"
             android:layout_height="wrap_content"
             android:background="#FFE794"
+            android:onClick="agregar"
             android:text="AGREGAR"
             android:textSize="18sp"
             android:textStyle="bold" />
