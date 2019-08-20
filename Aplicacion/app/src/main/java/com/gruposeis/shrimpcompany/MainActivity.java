@@ -10,12 +10,19 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class MainActivity extends AppCompatActivity {
     private static final String STRING_PREFERENCES="usuario";
     private static final String USUARIO="usuario.sesion";
     private static final String CONTRASEÑA="usuario.contraseña";
     private EditText user,password;
-    private String u="a", c="b";
+    private String u="ccoloma", c="1234";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,20 +30,22 @@ public class MainActivity extends AppCompatActivity {
         if (ObtenercontraseñaGuardada().equals(c) && ObtenerUsuarioGuardado().equals(u)){
             Intent i = new Intent(this, InicioActivity.class );
             startActivity(i);
+            startService(new Intent (this,Notificaciones.class));
             finish();
         }
         user= (EditText) findViewById(R.id.user);
         password= (EditText) findViewById(R.id.password);
     }
 
-    @Override
-    public void onBackPressed() {    }
+    public void Ingresar (View v) throws SQLException, ClassNotFoundException {
+        String usuario=user.getText().toString().trim();
+        String contrasena=password.getText().toString().trim();
 
-    public void Ingresar (View v){
-        if(user.getText().toString().trim().equals(u) && password.getText().toString().trim().equals(c)){
+        if(usuario.equals(u) && contrasena.equals(c)){
             Intent i = new Intent(this, InicioActivity.class );
             startActivity(i);
             guardarInicio();
+            startService(new Intent (this,Notificaciones.class));
             finish();
         }
         else {
@@ -44,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             user.setText("");
             password.setText("");
         }
+
     }
 
     public void guardarInicio(){
