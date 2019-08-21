@@ -2,8 +2,10 @@ package com.gruposeis.shrimpcompany;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,8 +16,8 @@ public class HistorialActivity extends AppCompatActivity {
     private String pwdMySQL = "BPY0HGFDSZ";
     private String database = "Jc7RWjhMfk";
     private String[] datosConexion = null;
-    private TextView consulta;
     private String ID;
+    private TableLayout table;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +25,9 @@ public class HistorialActivity extends AppCompatActivity {
         setContentView(R.layout.activity_historial);
         Bundle bundle = getIntent().getExtras();
         ID= bundle.getString("IDpiscina");
-        consulta= (TextView) findViewById(R.id.historial);
+        table = (TableLayout) findViewById(R.id.tablelayout);
         mostrarResultados();
+
     }
 
 
@@ -44,9 +47,11 @@ public class HistorialActivity extends AppCompatActivity {
             Class.forName(driver).newInstance();
             resultadoSQL = new AsyncQuery().execute(datosConexion).get();
             Toast.makeText(HistorialActivity.this,"Conexión Establecida", Toast.LENGTH_LONG).show();
-
-            String resultadoConsulta = resultadoSQL[0];
-            consulta.setText("ID, pH, Temperatura, #Piscina\n"+resultadoConsulta );
+            String[] cabecera={"\n ,Fecha y Hora,Valor de pH,Temperatura, ","1","5"};
+            Tablas(cabecera);
+            Tablas(resultadoSQL);
+           // String resultadoConsulta = resultadoSQL[0];
+            //filasconsulta.setText("ID, pH, Temperatura, #Piscina\n"+resultadoConsulta );
         }catch(Exception ex)
         {
             Toast.makeText(this, "Error al obtener resultados de la consulta Transact-SQL: "
@@ -54,4 +59,24 @@ public class HistorialActivity extends AppCompatActivity {
         }
     }
 
+    public void Tablas(String[] resultado) {
+
+        String resultadoConsulta = resultado[0];
+        int NUM_ROW = Integer.parseInt(resultado[1]);
+        int NUM_COLS = Integer.parseInt(resultado[2]);
+        String[] filas = resultadoConsulta.split("\n");
+        for (int i = 1; i < (NUM_ROW+1); i++) {
+            TableRow tableRow = new TableRow(HistorialActivity.this);
+            table.addView(tableRow);
+            tableRow.setBackgroundColor(Color.GRAY);
+            String[] columnas = filas[i].split(",");
+
+            for (int j = 1; j < (NUM_COLS-1); j++) {
+                TextView valor = new TextView(getApplicationContext());
+                valor.setText(columnas[j] + "  ");
+                valor.setTextColor(Color.BLACK);
+                tableRow.addView(valor);
+            }
+        }
+    }
 }
