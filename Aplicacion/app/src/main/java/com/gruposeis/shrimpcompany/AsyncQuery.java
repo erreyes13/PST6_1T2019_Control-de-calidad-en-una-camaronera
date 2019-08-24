@@ -12,13 +12,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-@RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
 public class AsyncQuery extends AsyncTask<String[],Void,String[]> {
 
     private Connection conexionMySQL;
     private Statement st = null;
     private ResultSet rs = null;
 
+    /**
+     * Este metodo nos permite ingresar a la base de datos obtener y enviar datos hacia ella.
+
+     */
     protected String[] doInBackground(String[]... datos) {
         String sql = datos[0][5];
         String resultadoSQL = "";
@@ -36,6 +39,11 @@ public class AsyncQuery extends AsyncTask<String[],Void,String[]> {
                     USUARIO,PASSWORD);
 
             st = conexionMySQL.createStatement();
+            if(sql.contains("INSERT")){
+                Log.d("Query: ",sql);
+                st.executeUpdate(sql);
+            }
+            else {
             rs = st.executeQuery(sql);
             rs.last();
             numFilas = rs.getRow();
@@ -61,6 +69,7 @@ public class AsyncQuery extends AsyncTask<String[],Void,String[]> {
                 }
             }
             totalResultadoSQL = new String[]{ resultadoSQL,String.valueOf(numFilas),String.valueOf(numColumnas)};
+            }
 
         }catch(SQLException ex)
         {

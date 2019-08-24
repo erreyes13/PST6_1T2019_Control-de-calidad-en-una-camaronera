@@ -19,6 +19,9 @@ public class AlertasActivity extends AppCompatActivity {
     private String ID;
     private TableLayout table;
 
+    /**
+     * En este método sobreescrito se inicializan las variables a usar y que se encuentran definidas en el archivo XML, o gruadados en extras
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,9 @@ public class AlertasActivity extends AppCompatActivity {
         mostrarResultados();
     }
 
+    /**
+     * Este metodo permite mostrar los resultados de las alertas registradas en la bases de datos.
+     */
     public void mostrarResultados()
     {
         String[] resultadoSQL = null;
@@ -55,6 +61,10 @@ public class AlertasActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Este metodo nos permite colocar los datos obtenidos de la base de datos y colocarlos dentro de un Table Layout, con el fin de mejorar la presentacion de dicha infromación
+     * @param resultado
+     */
     public void Tablas(String[] resultado) {
 
         String resultadoConsulta = resultado[0];
@@ -64,7 +74,7 @@ public class AlertasActivity extends AppCompatActivity {
         for (int i = 1; i < (NUM_ROW+1); i++) {
             TableRow tableRow = new TableRow(this);
             table.addView(tableRow);
-            tableRow.setBackgroundColor(Color.GRAY);
+            tableRow.setBackgroundColor(Color.LTGRAY);
             String[] columnas = filas[i].split(",");
 
             for (int j = 1; j < (NUM_COLS-1); j++) {

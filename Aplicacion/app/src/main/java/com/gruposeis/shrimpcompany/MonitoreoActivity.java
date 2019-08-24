@@ -24,6 +24,10 @@ public class MonitoreoActivity extends AppCompatActivity {
     private String database = "Jc7RWjhMfk";
     private String[] datosConexion = null;
 
+
+    /**
+     * Este metodo permite ingresar a la actividad y tambien agrega botones en esta de manera dinamica dependiendo de la cantidad de piscinas ingresadas en la base de datos
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +57,9 @@ public class MonitoreoActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Retorna la cantidad de piscinas ingresadas en la base de datos tomando en cuenta al usuario
+     */
     public int cantPiscinas(){
         String[] resultadoSQL = null;
         try{
