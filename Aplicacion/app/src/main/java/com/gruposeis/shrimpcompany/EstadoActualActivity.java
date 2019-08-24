@@ -21,6 +21,9 @@ public class EstadoActualActivity extends AppCompatActivity {
     private String[] datosConexion = null;
     private TextView consulta;
 
+    /**
+     * En este método sobreescrito se inicializan las variables a usar y que se encuentran definidas en el archivo XML
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +37,9 @@ public class EstadoActualActivity extends AppCompatActivity {
         MostrarDatos();
     }
 
-
+    /**
+     * Este genera un cuadro de dialogo de seleccion que permite que el usuario elija la opcion de historial que desea ver
+     */
     public void Historial(View v){
         final String[] items = {"General", "Alertas"};
         AlertDialog.Builder builder =new AlertDialog.Builder(this);
@@ -56,6 +61,9 @@ public class EstadoActualActivity extends AppCompatActivity {
         builder.create().show();
     }
 
+    /**
+     * Este metodo muestra los datos de la piscina que desea monitorear
+     */
     public void MostrarDatos(){
         String[] resultadoSQL = null;
         try{

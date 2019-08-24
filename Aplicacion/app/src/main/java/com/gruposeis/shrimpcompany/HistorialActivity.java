@@ -19,6 +19,9 @@ public class HistorialActivity extends AppCompatActivity {
     private String ID;
     private TableLayout table;
 
+    /**
+     * En este método sobreescrito se inicializan las variables a usar y que se encuentran definidas en el archivo XML
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +33,9 @@ public class HistorialActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Este metodo permite mostrar los datos de las lecturas tomadas por los sensores ubicadas en la base de datos
+     */
     public void mostrarResultados()
     {
         String[] resultadoSQL = null;
@@ -59,6 +64,9 @@ public class HistorialActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Este metodo nos permite colocar los datos obtenidos de la base de datos y colocarlos dentro de un Table Layout, con el fin de mejorar la presentacion de dicha infromación
+     */
     public void Tablas(String[] resultado) {
 
         String resultadoConsulta = resultado[0];

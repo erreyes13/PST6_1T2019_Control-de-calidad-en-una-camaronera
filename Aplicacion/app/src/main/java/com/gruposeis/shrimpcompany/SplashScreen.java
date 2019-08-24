@@ -8,6 +8,10 @@ import android.os.Handler;
 
 public class SplashScreen extends AppCompatActivity {
 
+    /**
+     * Permite generar una pantalla de presentacion de la app por un tiempo asigando y luego nos dirige a la siguiente ventana.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
